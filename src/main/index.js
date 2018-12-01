@@ -1,7 +1,17 @@
 'use strict'
 
 import uploader from './utils/uploader.js'
-import { app, BrowserWindow, Tray, Menu, Notification, clipboard, ipcMain, globalShortcut, dialog } from 'electron'
+import {
+  app,
+  BrowserWindow,
+  Tray,
+  Menu,
+  Notification,
+  clipboard,
+  ipcMain,
+  globalShortcut,
+  dialog
+} from 'electron'
 import db from '../datastore'
 import pasteTemplate from './utils/pasteTemplate'
 import updateChecker from './utils/updateChecker'
@@ -51,50 +61,49 @@ function createTray () {
       }
     }
   })
-  contextMenu = Menu.buildFromTemplate([
-    {
-      label: '关于',
-      click () {
-        dialog.showMessageBox({
-          title: 'PicGo',
-          message: 'PicGo',
-          detail: `Version: ${pkg.version}\nAuthor: Molunerfinn\nGithub: https://github.com/Molunerfinn/PicGo`
-        })
-      }
-    },
-    {
-      label: '打开详细窗口',
-      click () {
-        if (settingWindow === null) {
-          createSettingWindow()
-          settingWindow.show()
-        } else {
-          settingWindow.show()
-          settingWindow.focus()
-        }
-        if (miniWindow) {
-          miniWindow.hide()
-        }
-      }
-    },
-    {
-      label: '选择默认图床',
-      type: 'submenu',
-      submenu
-    },
-    {
-      label: '打开更新助手',
-      type: 'checkbox',
-      checked: db.get('settings.showUpdateTip').value(),
-      click () {
-        const value = db.read().get('settings.showUpdateTip').value()
-        db.read().set('settings.showUpdateTip', !value).write()
-      }
-    },
-    {
-      role: 'quit',
-      label: '退出'
+  contextMenu = Menu.buildFromTemplate([{
+    label: '关于',
+    click () {
+      dialog.showMessageBox({
+        title: 'PicGo',
+        message: 'PicGo',
+        detail: `Version: ${pkg.version}\nAuthor: Molunerfinn\nGithub: https://github.com/Molunerfinn/PicGo`
+      })
     }
+  },
+  {
+    label: '打开详细窗口',
+    click () {
+      if (settingWindow === null) {
+        createSettingWindow()
+        settingWindow.show()
+      } else {
+        settingWindow.show()
+        settingWindow.focus()
+      }
+      if (miniWindow) {
+        miniWindow.hide()
+      }
+    }
+  },
+  {
+    label: '选择默认图床',
+    type: 'submenu',
+    submenu
+  },
+  {
+    label: '打开更新助手',
+    type: 'checkbox',
+    checked: db.get('settings.showUpdateTip').value(),
+    click () {
+      const value = db.read().get('settings.showUpdateTip').value()
+      db.read().set('settings.showUpdateTip', !value).write()
+    }
+  },
+  {
+    role: 'quit',
+    label: '退出'
+  }
   ])
   tray.on('right-click', () => {
     if (window) {
@@ -279,21 +288,46 @@ const createMenu = () => {
   if (process.env.NODE_ENV !== 'development') {
     const template = [{
       label: 'Edit',
-      submenu: [
-        { label: 'Undo', accelerator: 'CmdOrCtrl+Z', selector: 'undo:' },
-        { label: 'Redo', accelerator: 'Shift+CmdOrCtrl+Z', selector: 'redo:' },
-        { type: 'separator' },
-        { label: 'Cut', accelerator: 'CmdOrCtrl+X', selector: 'cut:' },
-        { label: 'Copy', accelerator: 'CmdOrCtrl+C', selector: 'copy:' },
-        { label: 'Paste', accelerator: 'CmdOrCtrl+V', selector: 'paste:' },
-        { label: 'Select All', accelerator: 'CmdOrCtrl+A', selector: 'selectAll:' },
-        {
-          label: 'Quit',
-          accelerator: 'CmdOrCtrl+Q',
-          click () {
-            app.quit()
-          }
+      submenu: [{
+        label: 'Undo',
+        accelerator: 'CmdOrCtrl+Z',
+        selector: 'undo:'
+      },
+      {
+        label: 'Redo',
+        accelerator: 'Shift+CmdOrCtrl+Z',
+        selector: 'redo:'
+      },
+      {
+        type: 'separator'
+      },
+      {
+        label: 'Cut',
+        accelerator: 'CmdOrCtrl+X',
+        selector: 'cut:'
+      },
+      {
+        label: 'Copy',
+        accelerator: 'CmdOrCtrl+C',
+        selector: 'copy:'
+      },
+      {
+        label: 'Paste',
+        accelerator: 'CmdOrCtrl+V',
+        selector: 'paste:'
+      },
+      {
+        label: 'Select All',
+        accelerator: 'CmdOrCtrl+A',
+        selector: 'selectAll:'
+      },
+      {
+        label: 'Quit',
+        accelerator: 'CmdOrCtrl+Q',
+        click () {
+          app.quit()
         }
+      }
       ]
     }]
     menu = Menu.buildFromTemplate(template)
@@ -551,7 +585,7 @@ app.setLoginItemSettings({
  * Uncomment the following code below and install `electron-updater` to
  * support auto updating. Code Signing with a valid certificate is required.
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-electron-builder.html#auto-updating
-*/
+ */
 
 // import { autoUpdater } from 'electron-updater'
 

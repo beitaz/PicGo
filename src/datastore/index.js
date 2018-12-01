@@ -3,7 +3,10 @@ import LodashId from 'lodash-id'
 import FileSync from 'lowdb/adapters/FileSync'
 import path from 'path'
 import fs from 'fs-extra'
-import { remote, app } from 'electron'
+import {
+  remote,
+  app
+} from 'electron'
 
 const APP = process.type === 'renderer' ? remote.app : app
 const STORE_PATH = APP.getPath('userData')

@@ -16,8 +16,7 @@ module.exports = {
     }
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.(js|vue)$/,
         enforce: 'pre',
         exclude: /node_modules/,

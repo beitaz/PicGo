@@ -1,18 +1,22 @@
 <template>
-  <div id="mini-page"
+  <div
+    id="mini-page"
     :style="{ backgroundImage: 'url(' + logo + ')' }"
     :class="{ linux: os === 'linux' }"
   >
     <!-- <i class="el-icon-upload2"></i> -->
-  <div
-    id="upload-area"
-    :class="{ 'is-dragover': dragover, uploading: showProgress, linux: os === 'linux' }" @drop.prevent="onDrop" @dragover.prevent="dragover = true" @dragleave.prevent="dragover = false"
-    :style="{ backgroundPosition: '0 ' + progress + '%'}"
-  >
-    <div id="upload-dragger" @dblclick="openUplodWindow">
-      <input type="file" id="file-uploader" @change="onChange" multiple>
+    <div
+      id="upload-area"
+      :class="{ 'is-dragover': dragover, uploading: showProgress, linux: os === 'linux' }"
+      @drop.prevent="onDrop"
+      @dragover.prevent="dragover = true"
+      @dragleave.prevent="dragover = false"
+      :style="{ backgroundPosition: '0 ' + progress + '%'}"
+    >
+      <div id="upload-dragger" @dblclick="openUplodWindow">
+        <input type="file" id="file-uploader" @change="onChange" multiple>
+      </div>
     </div>
-  </div>
   </div>
 </template>
 <script>
@@ -115,14 +119,19 @@ export default {
     handleMouseUp (e) {
       this.dragging = false
       if (this.screenX === e.screenX && this.screenY === e.screenY) {
-        if (e.button === 0) { // left mouse
+        if (e.button === 0) {
+          // left mouse
           this.openUplodWindow()
         } else {
           let _this = this
           const types = picBed.map(item => item.type)
           let submenuItem = this.menu.items[1].submenu.items
           submenuItem.forEach((item, index) => {
-            const result = _this.$db.read().get('picBed.current').value() === types[index]
+            const result =
+              _this.$db
+                .read()
+                .get('picBed.current')
+                .value() === types[index]
             if (result) {
               item.click()
               return true
@@ -141,9 +150,16 @@ export default {
         return {
           label: item.name,
           type: 'radio',
-          checked: this.$db.read().get('picBed.current').value() === item.type,
+          checked:
+            this.$db
+              .read()
+              .get('picBed.current')
+              .value() === item.type,
           click () {
-            _this.$db.read().set('picBed.current', item.type).write()
+            _this.$db
+              .read()
+              .set('picBed.current', item.type)
+              .write()
             _this.$electron.ipcRenderer.send('syncPicBed')
           }
         }
@@ -163,7 +179,9 @@ export default {
         {
           label: '剪贴板图片上传',
           click () {
-            _this.$electron.ipcRenderer.send('uploadClipboardFilesFromUploadPage')
+            _this.$electron.ipcRenderer.send(
+              'uploadClipboardFilesFromUploadPage'
+            )
           }
         },
         {
@@ -183,39 +201,54 @@ export default {
 }
 </script>
 <style lang='stylus'>
-  #mini-page
-    background #409EFF
-    color #FFF
-    height 100vh
-    width 100vw
-    border-radius 50%
-    text-align center
-    line-height 100vh
-    font-size 40px
-    background-size 90vh 90vw
-    background-position center center
-    background-repeat no-repeat
-    position relative
-    border 4px solid #fff
-    box-sizing border-box
-    cursor pointer
-    &.linux
-      border-radius 0
-      background-size 100vh 100vw
-    #upload-area
-      height 100%
-      width 100%
-      border-radius 50%
-      transition all .2s ease-in-out
-      &.linux
-        border-radius 0
-      &.uploading
-        background: linear-gradient(to top, #409EFF 50%, #fff 51%)
-        background-size 200%
-      #upload-dragger
-        height 100%
-      &.is-dragover
-        background rgba(0,0,0,0.3)
-    #file-uploader
-      display none
+#mini-page {
+  background: #409EFF;
+  color: #FFF;
+  height: 100vh;
+  width: 100vw;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 100vh;
+  font-size: 40px;
+  background-size: 90vh 90vw;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+  border: 4px solid #fff;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  &.linux {
+    border-radius: 0;
+    background-size: 100vh 100vw;
+  }
+
+  #upload-area {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    transition: all 0.2s ease-in-out;
+
+    &.linux {
+      border-radius: 0;
+    }
+
+    &.uploading {
+      background: linear-gradient(to top, #409EFF 50%, #fff 51%);
+      background-size: 200%;
+    }
+
+    #upload-dragger {
+      height: 100%;
+    }
+
+    &.is-dragover {
+      background: rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  #file-uploader {
+    display: none;
+  }
+}
 </style>

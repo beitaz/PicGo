@@ -1,30 +1,37 @@
-# PicGo 
+# cc
 
-> 图片上传+管理新体验 
+> 纯纯饰品客户端
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/12621342/33876119-85a5148e-df5f-11e7-8843-46224e595d52.png" alt="">
-</p>
-<p align="center">
-  <a href="https://github.com/feross/standard">
-    <img src="https://img.shields.io/badge/code%20style-standard-green.svg?style=flat-square" alt="">
-  </a>
-  <a href="https://travis-ci.org/Molunerfinn/PicGo/builds">
-    <img src="https://img.shields.io/travis/Molunerfinn/PicGo.svg?style=flat-square" alt="">
-  </a>
-  <a href="https://github.com/Molunerfinn/PicGo/releases">
-    <img src="https://img.shields.io/github/downloads/Molunerfinn/PicGo/total.svg?style=flat-square" alt="">
-  </a>
-  <a href="https://github.com/Molunerfinn/PicGo/releases/latest">
-    <img src="https://img.shields.io/github/release/Molunerfinn/PicGo.svg?style=flat-square" alt="">
-  </a>
-</p>
+## 构建 (NPM)
+
+_提示:_ 通过 `npm install -g xxx` 全局安装后使用本地链接方式 `npm link xxx` 即可安装依赖。
+
+```shell
+$ npm config set registry 'https://registry.npm.taobao.org'
+$ ELECTRON_MIRROR=http://npm.taobao.org/mirrors/electron/ npm install -g electron
+$ SASS_BINARY_SITE=http://npm.taobao.org/mirrors/node-sass npm install -g node-sass
+$ npm install -g phantomjs --phantomjs_cdnurl=http://npm.taobao.org/mirrors/phantomjs
+$ npm install -g chromedriver --chromedriver_cdnurl=http://npm.taobao.org/mirrors/chromedriver
+$ npm link electron node-sass phantomjs chromedriver
+$ npm install
+$ npm run dev
+...
+```
+
+### 生产环境
+
+```shell
+$ npm run build:clean
+$ npm run build:dir
+$ npm run build:web
+...
+```
 
 ## 应用说明
 
-**PicGo在上传图片之后自动会将图片链接复制到你的剪贴板里，可选5种复制的链接格式。**
+**PicGo 在上传图片之后自动会将图片链接复制到你的剪贴板里，可选 5 种复制的链接格式。**
 
-PicGo目前支持了
+PicGo 目前支持了
 
 - `微博图床` v1.0
 - `七牛图床` v1.0
@@ -35,11 +42,11 @@ PicGo目前支持了
 - `阿里云OSS` v1.6.0
 - `Imgur` v1.6.0
 
-未来将不增加默认的图床支持。待PicGo v2.0出来后你可以自行开发第三方图床插件。
+未来将不增加默认的图床支持。待 PicGo v2.0 出来后你可以自行开发第三方图床插件。
 
-支持macOS、windows 64位（>= v1.3.1），linux（>= v1.6.0）。
+支持 macOS、windows 64 位（>= v1.3.1），linux（>= v1.6.0）。
 
-支持快捷键`command+shift+p`（macOS）或者`control+shift+p`（windows\linux）用以支持快捷上传剪贴板里的图片（第一张）。PicGo v1.4.0版本及以上支持自定义快捷键，使用方法见[配置手册](https://github.com/Molunerfinn/PicGo/wiki/%E8%AF%A6%E7%BB%86%E7%AA%97%E5%8F%A3%E7%9A%84%E4%BD%BF%E7%94%A8#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BF%AB%E6%8D%B7%E9%94%AE)。
+支持快捷键`command+shift+p`（macOS）或者`control+shift+p`（windows\linux）用以支持快捷上传剪贴板里的图片（第一张）。PicGo v1.4.0 版本及以上支持自定义快捷键，使用方法见[配置手册](https://github.com/Molunerfinn/PicGo/wiki/%E8%AF%A6%E7%BB%86%E7%AA%97%E5%8F%A3%E7%9A%84%E4%BD%BF%E7%94%A8#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BF%AB%E6%8D%B7%E9%94%AE)。
 
 开发进度可以查看[Projects](https://github.com/Molunerfinn/PicGo/projects)，会同步更新开发进度。
 
@@ -47,13 +54,13 @@ PicGo目前支持了
 
 ## 下载安装
 
-macOS用户请下载最新版本的`dmg`文件，windows用户请下载最新版本的`exe`文件，linux用户请下载`AppImage`文件。
+macOS 用户请下载最新版本的`dmg`文件，windows 用户请下载最新版本的`exe`文件，linux 用户请下载`AppImage`文件。
 
 点击此处下载[应用](https://github.com/Molunerfinn/PicGo/releases)。
 
-**如果你是Arch类的Linux用户，可以直接通过`aurman -S picgo-appimage`来安装PicGo。感谢@houbaron的贡献！**
+**如果你是 Arch 类的 Linux 用户，可以直接通过`aurman -S picgo-appimage`来安装 PicGo。感谢@houbaron 的贡献！**
 
-**如果是国内用户下载github release文件速度很慢的话，推荐使用[Free Download Manager](http://www.freedownloadmanager.org/download.htm)来下载，速度会快。**
+**如果是国内用户下载 github release 文件速度很慢的话，推荐使用[Free Download Manager](http://www.freedownloadmanager.org/download.htm)来下载，速度会快。**
 
 ## 应用截图
 
@@ -63,16 +70,16 @@ macOS用户请下载最新版本的`dmg`文件，windows用户请下载最新版
 
 ## 开发说明
 
-> 目前仅针对Mac、Windows。Linux平台并未测试。
+> 目前仅针对 Mac、Windows。Linux 平台并未测试。
 
-如果你想要学习、开发、修改或自行构建PicGo，可以依照下面的指示：
+如果你想要学习、开发、修改或自行构建 PicGo，可以依照下面的指示：
 
-> 如果想学习Electron-vue的开发，可以查看我写的系列教程——[Electron-vue开发实战](https://molunerfinn.com/tags/Electron-vue/)
+> 如果想学习 Electron-vue 的开发，可以查看我写的系列教程——[Electron-vue 开发实战](https://molunerfinn.com/tags/Electron-vue/)
 
-1. 你需要有node、git环境。需要了解npm的相关知识。
+1. 你需要有 node、git 环境。需要了解 npm 的相关知识。
 2. `git clone https://github.com/Molunerfinn/PicGo.git` 并进入项目
 3. `npm install` 下载依赖
-4. Mac需要有Xcode环境，Windows需要有VS环境。
+4. Mac 需要有 Xcode 环境，Windows 需要有 VS 环境。
 
 ### 开发模式
 
@@ -98,11 +105,11 @@ npm run build
 
 ## 其他相关
 
-- [vs-picgo](https://github.com/Spades-S/vs-picgo)：picgo的VSCode版。
+- [vs-picgo](https://github.com/Spades-S/vs-picgo)：picgo 的 VSCode 版。
 
 ## 赞助
 
-如果你喜欢PicGo并且它对你确实有帮助，欢迎给我打赏一杯咖啡哈~
+如果你喜欢 PicGo 并且它对你确实有帮助，欢迎给我打赏一杯咖啡哈~
 
 支付宝：
 

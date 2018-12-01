@@ -6,7 +6,9 @@ import App from './App'
 import router from './router'
 import store from './store'
 import db from '../datastore/index'
-import { webFrame } from 'electron'
+import {
+  webFrame
+} from 'electron'
 import './assets/fonts/iconfont.css'
 import picBed from '../datastore/pic-bed'
 import VueLazyLoad from 'vue-lazyload'
@@ -25,7 +27,9 @@ Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
-  components: { App },
+  components: {
+    App
+  },
   router,
   store,
   template: '<App/>'

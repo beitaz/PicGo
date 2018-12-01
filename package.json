@@ -1,9 +1,9 @@
 {
-  "name": "picgo",
-  "version": "1.6.2",
-  "author": "Molunerfinn <marksz@teamsz.xyz>",
-  "description": "Easy to upload your pic & copy to write",
-  "license": "MIT",
+  "name": "cc",
+  "version": "0.0.1",
+  "author": "beitaz <beitaz@icloud.com>",
+  "description": "纯纯饰品客户端",
+  "private": true,
   "main": "./dist/electron/main.js",
   "scripts": {
     "render": "webpack-dev-server --hot --colors --config .electron-vue/webpack.renderer.config.js --port 9080 --content-base app/dist",
@@ -29,8 +29,8 @@
     "major": "npm version major && git push origin master && git push origin --tags"
   },
   "build": {
-    "productName": "PicGo",
-    "appId": "com.molunerfinn.picgo",
+    "productName": "cc",
+    "appId": "com.beitaz.cc",
     "directories": {
       "output": "build"
     },
@@ -38,8 +38,7 @@
       "dist/electron/**/*"
     ],
     "dmg": {
-      "contents": [
-        {
+      "contents": [{
           "x": 410,
           "y": 150,
           "type": "link",

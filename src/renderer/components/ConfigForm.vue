@@ -1,12 +1,6 @@
 <template>
   <div id="config-form">
-    <el-form
-      label-position="right"
-      label-width="120px"
-      :model="ruleForm"
-      ref="form"
-      size="mini"
-    >
+    <el-form label-position="right" label-width="120px" :model="ruleForm" ref="form" size="mini">
       <el-form-item
         v-for="(item, index) in configList"
         :label="item.name"
@@ -37,8 +31,7 @@
           v-model="ruleForm[item.name]"
           active-text="yes"
           inactive-text="no"
-        >
-        </el-switch>
+        ></el-switch>
       </el-form-item>
     </el-form>
   </div>
@@ -95,20 +88,34 @@ export default {
 }
 </script>
 <style lang='stylus'>
-#config-form
-  .el-form
-    label
-      line-height 22px
-      padding-bottom 0
-    .el-button-group
-      width 100%
-      .el-button
-        width 50%
-    .el-input__inner
-      border-radius 19px
-    .el-radio-group
-      margin-left 25px
-    .el-switch__label
-      &.is-active
-        color #409EFF
+#config-form {
+  .el-form {
+    label {
+      line-height: 22px;
+      padding-bottom: 0;
+    }
+
+    .el-button-group {
+      width: 100%;
+
+      .el-button {
+        width: 50%;
+      }
+    }
+
+    .el-input__inner {
+      border-radius: 19px;
+    }
+
+    .el-radio-group {
+      margin-left: 25px;
+    }
+
+    .el-switch__label {
+      &.is-active {
+        color: #409EFF;
+      }
+    }
+  }
+}
 </style>

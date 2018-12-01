@@ -1,16 +1,8 @@
 <template>
   <div id="rename-page">
-    <el-form
-      @submit.native.prevent
-    >
-      <el-form-item
-        label="文件改名"
-      >
-        <el-input 
-          v-model="fileName"
-          size="small"
-          @keyup.enter.native="confirmName"
-        ></el-input>
+    <el-form @submit.native.prevent>
+      <el-form-item label="文件改名">
+        <el-input v-model="fileName" size="small" @keyup.enter.native="confirmName"></el-input>
       </el-form-item>
     </el-form>
     <el-row>
@@ -52,10 +44,15 @@ export default {
 }
 </script>
 <style lang='stylus'>
-  #rename-page
-    padding 0 20px
-    .pull-right
-      float right
-    .el-form-item__label
-      color #ddd
+#rename-page {
+  padding: 0 20px;
+
+  .pull-right {
+    float: right;
+  }
+
+  .el-form-item__label {
+    color: #ddd;
+  }
+}
 </style>
